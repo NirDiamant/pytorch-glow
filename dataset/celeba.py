@@ -23,6 +23,9 @@ class CelebA(Dataset):
         """
         super().__init__()
         assert os.path.isdir(root), 'Dataset dirctory not exists: {}'.format(root)
+        print(f'root dir is: {root}')
+
+        # in celeba.json, in root, there was originally "root": "/Data/CelebA",
         self.root = root
         self.image_dir = image_dir
         self.anno_file = anno_file
@@ -56,7 +59,9 @@ class CelebA(Dataset):
                     attrs = line.split(' ')
                 else:
                     elements = [e for e in line.split(' ') if e]
-                    image_path = os.path.join(self.root, self.image_dir, elements[0])
+                    # image_path = os.path.join(self.root, self.image_dir, elements[0])
+                    image_path = elements[0]
+                    # print(f'image path:{image_path}')
                     image_attr = elements[1:]
                     if not os.path.exists(image_path) or not util.is_image(image_path):
                         continue

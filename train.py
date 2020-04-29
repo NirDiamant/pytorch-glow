@@ -9,27 +9,28 @@ from network import Builder, Trainer
 from dataset import CelebA
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(
-        description='PyTorch implementation of "Glow: Generative Flow with Invertible 1x1 Convolutions"')
-    parser.add_argument('profile', type=str,
-                        default='profile/celeba.json',
-                        help='path to profile file')
-    return parser.parse_args()
+# def parse_args():
+#     parser = argparse.ArgumentParser(
+#         description='PyTorch implementation of "Glow: Generative Flow with Invertible 1x1 Convolutions"')
+#     parser.add_argument('profile', type=str,
+#                         default='profile/celeba.json',
+#                         help='path to profile file')
+#     return parser.parse_args()
 
 
 if __name__ == '__main__':
     # this enables a Ctrl-C without triggering errors
     signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
-
+    print("hello")
     # parse arguments
-    args = parse_args()
-
+    #args = parse_args()
+    args = "profile/celeba.json"
     # initialize logging
     util.init_output_logging()
 
     # load hyper-parameters
-    hps = util.load_profile(args.profile)
+    # hps = util.load_profile(args.profile)
+    hps = util.load_profile(args)
     util.manual_seed(hps.ablation.seed)
 
     # build graph

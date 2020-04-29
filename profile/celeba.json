@@ -1,3 +1,4 @@
+
 {
   "profile": "celeba_64x64_8bit",
   "general": {
@@ -10,9 +11,9 @@
   },
   "dataset": {
     "problem": "celeba",
-    "root": "/Data/CelebA",
-    "num_classes": 40,
-    "num_workers": 8,
+    "root": "/home/nird/glow_pytorch/dataset/Data/CelebA",
+    "num_classes": 1,
+    "num_workers": 6,
     "argument": "standard"
   },
   "optim": {
@@ -24,8 +25,8 @@
     "interval_snapshot": 5000,
     "interval_valid": 10,
     "interval_sample": 10,
-    "num_batch_train": 50,
-    "num_batch_test": 50,
+    "num_batch_train": 60,
+    "num_batch_test": 60,
     "num_batch_init": 256,
     "optimizer": "adam",
     "optimizer_args": {
@@ -61,7 +62,7 @@
   "ablation": {
     "learn_top": false,
     "y_condition": false,
-    "y_criterion": "multi_classes",
+    "y_criterion": "single_class",
     "lu_decomposition": false,
     "seed": 2384,
     "flow_permutation": "invconv",
@@ -72,7 +73,12 @@
   "device": {
     "graph": [
       "cuda:0",
-      "cuda:1"
+      "cuda:1",
+      "cuda:2",
+      "cuda:3",
+      "cuda:4",
+      "cuda:5"
+
     ],
     "data": [
       "cuda:0"

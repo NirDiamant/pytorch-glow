@@ -164,6 +164,7 @@ def create_result_subdir(result_dir, desc, profile):
     :return: path to result sub-directory
     :rtype: str
     """
+    result_dir = 'results'
     # determine run id
     run_id = 0
     for fname in glob.glob(os.path.join(result_dir, '*')):
