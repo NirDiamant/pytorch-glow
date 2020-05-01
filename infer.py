@@ -34,7 +34,7 @@ def cli(ctx, profile, snapshot):
     dataset = CelebA(root=hps.dataset.root,
                      transform=transforms.Compose((
                          transforms.CenterCrop(160),
-                         transforms.Resize(64),
+                         transforms.Resize(128),
                          transforms.ToTensor()
                      )))
 
@@ -85,9 +85,10 @@ def compute_deltaz(ctx):
 @click.argument('image_path', type=click.Path(exists=True))
 @click.pass_context
 def reconstruct(ctx, image_path):
+
     hps = ctx.obj['hps']
     inferer = ctx.obj['inferer']
-
+    # image_path = "/home/nird/glow_pytorch/experiments_images/"
     # get image list
     img_list = []
     if os.path.isfile(image_path) and util.is_image(image_path):
@@ -105,7 +106,7 @@ def reconstruct(ctx, image_path):
         x = util.pil_to_tensor(img,
                                transform=transforms.Compose((
                                    transforms.CenterCrop(160),
-                                   transforms.Resize(64),
+                                   transforms.Resize(128),
                                    transforms.ToTensor()
                                )))
         z = inferer.encode(x)

@@ -108,7 +108,8 @@ class FlowStep(nn.Module):
         else:
             h = self.f(z1)
             shift, scale = ops.split_channel(h, 'cross')
-            scale = F.sigmoid(scale + 2.)
+            # scale = F.sigmoid(scale + 2.)
+            scale = torch.sigmoid(scale + 2.)
             z2 += shift
             z2 *= scale
             logdet = ops.reduce_sum(torch.log(scale), dim=[1, 2, 3]) + logdet
@@ -134,7 +135,8 @@ class FlowStep(nn.Module):
         else:
             h = self.f(z1)
             shift, scale = ops.split_channel(h, 'cross')
-            scale = F.sigmoid(scale + 2.)
+            # scale = F.sigmoid(scale + 2.)
+            scale = torch.sigmoid(scale + 2.)
             z2 /= scale
             z2 -= shift
             logdet = -ops.reduce_sum(torch.log(scale), dim=[1, 2, 3]) + logdet

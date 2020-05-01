@@ -1,9 +1,9 @@
 
 {
-  "profile": "celeba_64x64_8bit",
+  "profile": "celeba_128x128_8bit",
   "general": {
     "verbose": false,
-    "result_dir": "/Data/glow",
+    "result_dir": "/home/nird/glow_pytorch/result/",
     "warm_start": false,
     "pre_trained": "",
     "resume_run_id": 1,
@@ -22,11 +22,11 @@
     "num_test": -1,
     "num_sample": 4,
     "interval_scalar": 10,
-    "interval_snapshot": 5000,
+    "interval_snapshot": 510,
     "interval_valid": 10,
     "interval_sample": 10,
-    "num_batch_train": 60,
-    "num_batch_test": 60,
+    "num_batch_train": 36,
+    "num_batch_test": 36,
     "num_batch_init": 256,
     "optimizer": "adam",
     "optimizer_args": {
@@ -47,8 +47,8 @@
   },
   "model": {
     "image_shape": [
-      64,
-      64,
+      128,
+      128,
       3
     ],
     "anchor_size": 32,
@@ -78,7 +78,6 @@
       "cuda:3",
       "cuda:4",
       "cuda:5"
-
     ],
     "data": [
       "cuda:0"

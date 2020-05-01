@@ -199,28 +199,30 @@ def locate_result_subdir(result_dir, run_id_or_result_subdir):
     :return: located result subdir
     :rtype: str
     """
-    if isinstance(run_id_or_result_subdir, str) and os.path.isdir(run_id_or_result_subdir):
-        return run_id_or_result_subdir
+    # if isinstance(run_id_or_result_subdir, str) and os.path.isdir(run_id_or_result_subdir):
+    #     return run_id_or_result_subdir
+    #
+    # searchdirs = ['', 'results', 'networks']
+    #
+    # for searchdir in searchdirs:
+    #     d = result_dir if searchdir == '' else os.path.join(result_dir, searchdir)
+    #     # search directly by name
+    #     d = os.path.join(d, str(run_id_or_result_subdir))
+    #     if os.path.isdir(d):
+    #         return d
+    #     # search by prefix
+    #     if isinstance(run_id_or_result_subdir, int):
+    #         prefix = '{:03d}'.format(run_id_or_result_subdir)
+    #     else:
+    #         prefix = str(run_id_or_result_subdir)
+    #     dirs = sorted(glob.glob(os.path.join(result_dir, searchdir, prefix + '-*')))
+    #     dirs = [d for d in dirs if os.path.isdir(d)]
+    #     if len(dirs) == 1:
+    #         return dirs[0]
+    # print('[Builder] Cannot locate result subdir for run: {}'.format(run_id_or_result_subdir))
+    # return None
 
-    searchdirs = ['', 'results', 'networks']
-
-    for searchdir in searchdirs:
-        d = result_dir if searchdir == '' else os.path.join(result_dir, searchdir)
-        # search directly by name
-        d = os.path.join(d, str(run_id_or_result_subdir))
-        if os.path.isdir(d):
-            return d
-        # search by prefix
-        if isinstance(run_id_or_result_subdir, int):
-            prefix = '{:03d}'.format(run_id_or_result_subdir)
-        else:
-            prefix = str(run_id_or_result_subdir)
-        dirs = sorted(glob.glob(os.path.join(result_dir, searchdir, prefix + '-*')))
-        dirs = [d for d in dirs if os.path.isdir(d)]
-        if len(dirs) == 1:
-            return dirs[0]
-    print('[Builder] Cannot locate result subdir for run: {}'.format(run_id_or_result_subdir))
-    return None
+    return result_dir
 
 
 def format_time(seconds):
@@ -423,7 +425,7 @@ def tensor_to_pil(tensor):
     return transform(tensor)
 
 
-def ndarray_to_tensor(img, shape=(64, 64, 3), bgr2rgb=True):
+def ndarray_to_tensor(img, shape=(128, 128, 3), bgr2rgb=True):
     """
     Convert numpy image to float tensor
 
@@ -444,7 +446,7 @@ def ndarray_to_tensor(img, shape=(64, 64, 3), bgr2rgb=True):
     return img
 
 
-def pil_to_tensor(img, shape=(64, 64, 3), transform=None):
+def pil_to_tensor(img, shape=(128, 128, 3), transform=None):
     """
     Convert PIL image to float tensor
 
@@ -464,7 +466,7 @@ def pil_to_tensor(img, shape=(64, 64, 3), transform=None):
     return transform(img)
 
 
-def image_to_tensor(img, shape=(64, 64, 3), bgr2rgb=True):
+def image_to_tensor(img, shape=(128, 128, 3), bgr2rgb=True):
     """
     Convert image to torch tensor
 

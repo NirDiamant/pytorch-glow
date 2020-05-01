@@ -41,7 +41,7 @@ if __name__ == '__main__':
     dataset = CelebA(root=hps.dataset.root,
                      transform=transforms.Compose((
                          transforms.CenterCrop(160),
-                         transforms.Resize(64),
+                         transforms.Resize(128),
                          transforms.ToTensor()
                      )))
 

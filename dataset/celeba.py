@@ -6,6 +6,9 @@ from torch.utils.data import Dataset
 
 from misc import util
 
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 
 class CelebA(Dataset):
     def __init__(self, root,
